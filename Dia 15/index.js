@@ -1,9 +1,22 @@
-const arrayA = [13, 20, 10, 22, 24, 20, 27, 17, 19, 14, 20];
-const arrayB = [24, 22, 23, 11, 15, 17, 29, 14, 16, 21, 20];
+const arrayA = [13,20,10,22,24,20,27,17,19,14,20];
+const arrayB = [24,22,23,11,15,17,29,14,16,21,20];
 
 function retornarNumerosComum(arr1, arr2) {
-  const setB = new Set(arr2);
-  const arraySaida = [...new Set(arr1.filter(x => setB.has(x)))];
+  let arraySaida =[];
+  for (let i = 0; i < arrayA.length; i++) {
+    for (let j = 0; j < arrayB.length; j++) {
+      if (arrayA[i] === arrayB[j]) {
+        arraySaida.push(arrayA[i]);
+      }
+    }
+  }
+  for (let i = 0; i < arraySaida.length; i++) {
+    for (let j = i + 1; j < arraySaida.length; j++) {
+      if (arraySaida[i] === arraySaida[j]) {
+        arraySaida.splice(i, 1);
+      }
+    }
+  }
   return arraySaida;
 }
 
