@@ -71,3 +71,49 @@ Esta é uma forma mais "JavaScript-esca" de realizar a mesma tarefa.
 
 let corrida = new Corrida("Interlagos", "StockCar", 1200)
 corrida.exibirVencedor(carros)
+
+/*
+class Carro {
+  constructor(nome, potencia, velMax, aceleracao) {
+    this.nome = nome;
+    this.potencia = potencia;
+    this.velMax = velMax;
+    this.aceleracao = aceleracao;
+  }
+
+  calcularTempoDistancia(distancia) {
+    const resultado = distancia / (this.velMax / this.aceleracao);
+    return resultado;
+  }
+}
+
+const carros = [
+  new Carro("VW", 105, 160, 12),
+  new Carro("Fiat", 160, 190, 8),
+  new Carro("Toyota", 200, 210, 6)
+];
+
+class Corrida {
+  constructor(nome, tipo, distancia) {
+    this.nome = nome;
+    this.tipo = tipo;
+    this.distancia = distancia;
+    this.vencedor = "";
+  }
+
+  verificarVencedor(carros) {
+    const tempos = carros.map(carro => carro.calcularTempoDistancia(this.distancia));
+    const menorTempo = Math.min(...tempos);
+    const carroVencedor = carros[tempos.indexOf(menorTempo)];
+    this.vencedor = carroVencedor.nome;
+  }
+
+  exibirVencedor(carros) {
+    this.verificarVencedor(carros);
+    console.log(`O vencedor foi: ${this.vencedor}`);
+  }
+}
+
+const corrida = new Corrida("Interlagos", "StockCar", 1200);
+corrida.exibirVencedor(carros);
+*/
