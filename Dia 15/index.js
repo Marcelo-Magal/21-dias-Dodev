@@ -2,8 +2,8 @@ const arrayA = [13,20,10,22,24,20,27,17,19,14,20];
 const arrayB = [24,22,23,11,15,17,29,14,16,21,20];
 
 function retornarNumerosComum(arr1, arr2) {
-  let arraySaida =[];
-  for (let i = 0; i < arrayA.length; i++) {
+  const arraySaida =[];
+  for (let i = 0; i < arrayA.length; i++) {            
     for (let j = 0; j < arrayB.length; j++) {
       if (arrayA[i] === arrayB[j]) {
         arraySaida.push(arrayA[i]);
@@ -14,13 +14,30 @@ function retornarNumerosComum(arr1, arr2) {
     for (let j = i + 1; j < arraySaida.length; j++) {
       if (arraySaida[i] === arraySaida[j]) {
         arraySaida.splice(i, 1);
-      }
-    }
-  }
-  return arraySaida;
+        j--;      // Decrementamos j para não pular nenhum elemento após a remoção. Por exemplo, se o array é [1, 2, 2, 3]
+      }           // e estamos na iteração onde i = 1 e j = 2, após a remoção o array será [1, 2, 3]. Sem o j--, na
+    }             // próxima iteração j seria 3 e estaríamos verificando o elemento 3 em vez do segundo 2 
+  }               // que foi deslocado para o índice 2. Com o j--, na próxima iteração j será 2, permitindo-nos
+  return arraySaida;  //  verificar corretamente o segundo 2.
 }
 
 console.log(retornarNumerosComum(arrayA, arrayB));
+         
+
+
+
+// MÉTODO ULTRA EFICIENTE:
+
+function retornarNumerosComumV2(arr1, arr2) {
+  const arraySaida = arr1.filter((n) => arr2.includes(n)); //Seria como: se n estiver em arr1 e tb estiver em aar2,
+  return [...new Set(arraySaida)];                         // será adicionado em arraySaida.
+} //new Set - Cria um conjunto (Set) a partir do arraySaida,
+  // removendo duplicatas automaticamente, pois um conjunto só pode conter valores únicos.
+  //... -  Usa o operador de espalhamento (...) para converter o conjunto de volta para um array,
+  //  mantendo a unicidade dos valores.
+console.log(`Versão 2 + EFICIENTE: ${retornarNumerosComumV2(arrayA, arrayB)}`);
+
+
 
 /*
 // Declaração dos arrays
